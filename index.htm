@@ -5,22 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Guess the note!</title>
     <link rel="stylesheet" href="styles.css" />
-    <script src="script.js"></script>
 </head>
 <body>
-    <h2 class="title">Guess the note!</h2>
+    <h1 class="title">Guess the note!</h1>
     <p class="description">
         Press the button that matches the sound
     </p>
-    <button id="replay">Listen again</button>
-    <div class="Buttons">
-        <button id="c_button">C</button>
-        <button id="d_button">D</button>
-        <button id="e_button">E</button>
-        <button id="f_button">F</button>
-        <button id="g_button">G</button>
-        <button id="a_button">A</button>
-        <button id="b_button">B</button>
+    <button onclick="start()" id="start_button">Start</button>
+    <div class="game">
+        <h3>score</h3><label id="score">d</label>
+
+        <div>
+            <button id="replay">Listen again</button>
+        </div>
+        <div class="Buttons">
+            <button id="c_button">C</button>
+            <button id="d_button">D</button>
+            <button id="e_button">E</button>
+            <button id="f_button">F</button>
+            <button id="g_button">G</button>
+            <button id="a_button">A</button>
+            <button id="b_button">B</button>
+        </div>
     </div>
+    <script src="script.js"></script>
 </body>
 </html>
