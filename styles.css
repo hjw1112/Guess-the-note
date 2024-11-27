@@ -1,17 +1,27 @@
+@font-face {
+    font-family: Amazingkids;
+    src: url(AmazingKids.otf);
+}
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 20px;
+    background-color:aquamarine;
 }
 
 .title {
-    font-size: 24px;
+    font-family: AmazingKids;
     margin-bottom: 10px;
+    margin-top: -5px;
+    text-align: center;
+    font-size: 70px;
 }
 
 .description {
     font-size: 18px;
     margin-bottom: 20px;
+    text-align: center;
 }
 
 /* game hidden */
