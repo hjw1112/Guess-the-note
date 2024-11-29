@@ -1,19 +1,39 @@
+let i = 0;
+let score = 0;
 //show the game div
 function start() {
     const hiddenPage = document.querySelector('.game');
-    const startbutton = document.getElementById("start_button")
+    const startbutton = document.getElementById("start_button");
     if (hiddenPage.style.display === 'none' || hiddenPage.style.display === '') {
         hiddenPage.style.display = 'block'; 
         startbutton.style.display = 'none';
     }
-    play();
+    increment();
+}
+
+function game(input, note) {
+    if (note == input) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function increment() {
+    if (i < 5) {
+        i++;
+        play();
+    } else {
+        console.log("end game", score);
+        alert(`Game over! Your score is: ${score}`);
+    }
 }
 
 //get note no
 function get_note() {
     const note = Math.floor(Math.random() * 7) + 1;
     console.log(note);
-    return note
+    return note;
 }
 //get audio for note
 function get_audio(note) {
@@ -32,7 +52,7 @@ function get_audio(note) {
     } else if (note == 7) {
         var audio = document.getElementById("b_audio");
     }
-    return audio
+    return audio;
 }
 //replay the note
 function replay(audio) {
@@ -42,32 +62,38 @@ function replay(audio) {
 
 //main game logics
 function play() {
-    note = get_note();
-    audio = get_audio(note);
+    if (i >= 6) return;
+
+    const note = get_note();
+    const audio = get_audio(note);
+
     audio.play();
+
+    // button event listeners for note choices (waiting for user interaction)
+    const buttons = [
+        { id: "c_button", note: 1 },
+        { id: "d_button", note: 2 },
+        { id: "e_button", note: 3 },
+        { id: "f_button", note: 4 },
+        { id: "g_button", note: 5 },
+        { id: "a_button", note: 6 },
+        { id: "b_button", note: 7 },
+    ];
+
+    buttons.forEach(button => {
+        // add event listener to each button
+        document.getElementById(button.id).onclick = () => {
+            if (game(button.note, note)) {
+                score += 1;  // increment score
+            }
+            increment();
+        };
+    });
+
+    // replay button
     const replaybutton = document.getElementById("replaybutton");
     replaybutton.addEventListener("click", () => replay(audio));
+
+    const playagain = document.getElementById("play_again");
+    playagain.addEventListener("click", () => location.reload());
 }
-
-
-//increment for looping game 5 times. 
-function main() {
-    if (iteration < 6) {
-      iteration++;
-      play();
-    } 
-    else {
-        console.log("end game")
-    }
-  }
-
-
-
-const buttondiv = document.querySelectorAll(".buttons");
-
-buttondiv.addEventListener("click", (event) => {
-  // Check if the clicked element is a button
-  if (event.target && event.target.matches(".buttons")) {
-    main(event.target);
-  }
-});
