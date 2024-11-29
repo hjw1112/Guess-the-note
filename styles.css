@@ -71,3 +71,8 @@ body {
     margin-bottom: 50px;
     font-size: 20px;
 }
+
+#score-writing {
+    color:rgb(40, 100, 80); 
+    display: inline
+}
