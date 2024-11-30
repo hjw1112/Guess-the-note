@@ -76,3 +76,7 @@ body {
     color:rgb(40, 100, 80); 
     display: inline
 }
+
+.buttons {
+    cursor: pointer; /* Pointer cursor on hover */
+}
